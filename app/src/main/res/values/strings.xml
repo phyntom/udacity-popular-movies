@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">POPULAR MOVIES</string>
+    <!--UI text-->
+    <string name="app_name">Popular Movie</string>
+
+    <!--Activity titles-->
+    <string name="activity_movie_details">Movie Details</string>
+    <string name="activity_settings">Settings</string>
+
+    <!--UI title for movie details activity-->
+    <string name="title">Title</string>
+    <string name="rating">Rating</string>
+    <string name="release_date">Release Date</string>
+    <string name="overview">Description</string>
+
+    <string name="pref_sort_by_title">Sort By</string>
+    <string-array name="pref_sort_order_title">
+        <item>Most Popular</item>
+        <item>Most Rated</item>
+    </string-array>
+    <string-array name="pref_sort_order_value">
+        <item>popular</item>
+        <item>top_rated</item>
+    </string-array>
+
 </resources>

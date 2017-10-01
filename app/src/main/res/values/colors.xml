@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorPrimary">#0099e5</color>
+    <color name="colorPrimaryDark">#039be5</color>
+    <color name="colorAccent">#FF6D00</color>
+    <!--Text Colors-->
+    <color name="app_title">#ECEFF1</color>
+    <color name="text_details">#3E2723</color>
+    <color name="separator">#BDBDBD</color>
+    <!--UI-colors-->
+    <color name="display">#ECEFF1</color>
+    <color name="display_details">#7E57C2</color>
 </resources>
