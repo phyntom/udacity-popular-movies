@@ -1,24 +1,25 @@
 package com.phyntom.android.popular_movies;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by aimable on 26/09/2017.
  */
 
-public class Movie {
+public class Movie implements Serializable {
 
     private Integer id;
     private String title;
     private String overview;
     private String posterPath;
-    private double voteAverage;
+    private Double voteAverage;
     private Date releaseDate;
 
     public Movie() {
     }
 
-    public Movie(Integer id,String title, String overview, String posterPath, double voteAverage, Date releaseDate) {
+    public Movie(Integer id, String title, String overview, String posterPath, Double voteAverage, Date releaseDate) {
         this.id = id;
         this.title = title;
         this.overview = overview;
@@ -59,11 +60,11 @@ public class Movie {
         this.posterPath = posterPath;
     }
 
-    public double getVoteAverage() {
+    public Double getVoteAverage() {
         return voteAverage;
     }
 
-    public void setVoteAverage(double voteAverage) {
+    public void setVoteAverage(Double voteAverage) {
         this.voteAverage = voteAverage;
     }
 
@@ -73,36 +74,6 @@ public class Movie {
 
     public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Movie movie = (Movie) o;
-
-        if (Double.compare(movie.voteAverage, voteAverage) != 0) return false;
-        if (title != null ? !title.equals(movie.title) : movie.title != null) return false;
-        if (id != null ? !id.equals(movie.id) : movie.id != null) return false;
-        if (overview != null ? !overview.equals(movie.overview) : movie.overview != null)
-            return false;
-        return posterPath != null ? posterPath.equals(movie.posterPath) : movie.posterPath == null && (releaseDate != null ? releaseDate.equals(movie.releaseDate) : movie.releaseDate == null);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = title != null ? title.hashCode() : 0;
-        result = 31 * result + (id != null ? id.hashCode() : 0);
-        result = 31 * result + (overview != null ? overview.hashCode() : 0);
-        result = 31 * result + (posterPath != null ? posterPath.hashCode() : 0);
-        temp = Double.doubleToLongBits(voteAverage);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (releaseDate != null ? releaseDate.hashCode() : 0);
-        return result;
     }
 
     @Override

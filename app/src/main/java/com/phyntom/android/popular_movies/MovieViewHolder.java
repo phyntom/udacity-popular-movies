@@ -10,14 +10,22 @@ import android.widget.TextView;
  */
 
 public class MovieViewHolder extends RecyclerView.ViewHolder {
+
     ImageView posterImageView;
     TextView titleTextView;
-
+    private MovieViewHolderClickListener listener;
 
     public MovieViewHolder(View itemView) {
         super(itemView);
-        posterImageView=(ImageView)itemView.findViewById(R.id.iv_video_poster);
-        titleTextView=(TextView)itemView.findViewById(R.id.tv_video_title);
+        posterImageView = (ImageView) itemView.findViewById(R.id.iv_video_poster);
     }
 
+    public void bind(final Movie movie, final MovieViewHolderClickListener listener){
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onClick(movie);
+            }
+        });
+    }
 }
