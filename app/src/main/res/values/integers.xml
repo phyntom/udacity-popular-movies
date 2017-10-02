@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Movie image sizes given from themoviedb API-->
-    <integer name="poster_size_w185_width">185</integer>
-    <integer name="poster_size_w185_height">185</integer>
-    <integer name="poster_size_w342_width">342</integer>
-    <integer name="poster_size_w342_height">342</integer>
+    <integer name="poster_185_width">185</integer>
+    <integer name="poster_185_height">185</integer>
+    <integer name="poster_342_width">342</integer>
+    <integer name="poster_342_height">342</integer>
 </resources>
