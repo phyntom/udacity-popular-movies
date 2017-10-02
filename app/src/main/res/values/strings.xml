@@ -34,5 +34,6 @@
         <item>fr</item>
         <item>de</item>
     </string-array>
-
+    <!--Text to display when not internet connection-->
+    <string name="error_internet">No internet connection available. Check your internet connection</string>
 </resources>
