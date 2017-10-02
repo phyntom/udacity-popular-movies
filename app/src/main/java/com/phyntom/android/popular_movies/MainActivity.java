@@ -33,11 +33,11 @@ public class MainActivity extends AppCompatActivity implements MovieViewHolderCl
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        SharedPreferences sharedPreference =
-                PreferenceManager.getDefaultSharedPreferences(this);
-        String searchKey  = sharedPreference.getString("pref_key", "popular");
+        SharedPreferences sharedPreference = PreferenceManager.getDefaultSharedPreferences(this);
+        String searchKey = sharedPreference.getString("pref_sort_key", "popular");
+        String language = sharedPreference.getString("pref_lan_key","en-US");
 
-        new FetchTask().execute(searchKey);
+        new FetchTask().execute(searchKey, language);
         mAdapter = new MovieAdapter(getApplicationContext(), this);
         recyclerView.setAdapter(mAdapter);
     }
@@ -81,12 +81,16 @@ public class MainActivity extends AppCompatActivity implements MovieViewHolderCl
         @Override
         protected List<Movie> doInBackground(String... strings) {
             String searchCriteria = null;
+            String pageSize = null;
             try {
                 if (strings.length > 0) {
                     searchCriteria = strings[0];
                 }
+                if (strings.length > 1) {
+                    pageSize = strings[1];
+                }
                 MovieService service = new MovieService();
-                return service.fetchMovies(searchCriteria);
+                return service.fetchMovies(searchCriteria,pageSize);
             }
             catch (Exception ex) {
                 ex.printStackTrace();

@@ -2,11 +2,19 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
                   xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
+        android:key="pref_sort_key"
+        android:title="@string/pref_sort_by_title"
         android:entries="@array/pref_sort_order_title"
         android:entryValues="@array/pref_sort_order_value"
-        android:key="pref_key"
         android:summary="This allows use to sort movies by popularity or rate"
-        android:title="@string/pref_sort_by_title"
         app:positiveButtonText="Apply"/>
+
+    <ListPreference
+        android:key="pref_lan_key"
+        android:defaultValue="en-US"
+        android:title="@string/pref_language_title"
+        android:entries="@array/pref_language_name"
+        app:entryValues="@array/pref_language_value"
+        android:summary="This allows user to specify his preferred language translation"/>
 
 </PreferenceScreen>

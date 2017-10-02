@@ -21,5 +21,18 @@
         <item>popular</item>
         <item>top_rated</item>
     </string-array>
+    <string name="pref_language_title">Language</string>
+    <string-array name="pref_language_name">
+        <item>English-USA</item>
+        <item>English</item>
+        <item>French</item>
+        <item>German</item>
+    </string-array>
+    <string-array name="pref_language_value">
+        <item>en-USA</item>
+        <item>en</item>
+        <item>fr</item>
+        <item>de</item>
+    </string-array>
 
 </resources>
