@@ -3,12 +3,12 @@
 
     <color name="colorPrimary">#0099e5</color>
     <color name="colorPrimaryDark">#039be5</color>
-    <color name="colorAccent">#FF6D00</color>
+    <color name="colorAccent">#ff6d00</color>
     <!--Text Colors-->
     <color name="app_title">#ECEFF1</color>
     <color name="text_details">#3E2723</color>
     <color name="separator">#BDBDBD</color>
     <!--UI-colors-->
     <color name="display">#ECEFF1</color>
-    <color name="display_details">#7E57C2</color>
+    <color name="display_details">#7e57c2</color>
 </resources>

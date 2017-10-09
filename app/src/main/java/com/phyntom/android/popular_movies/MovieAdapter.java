@@ -46,9 +46,17 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
         return movies.size();
     }
 
-    public void setMoviesData(List<Movie> movies) {
-        this.movies = movies;
-        notifyDataSetChanged();
+    public void setMoviesData(List<Movie> fetchedMovies) {
+
+        if(this.getItemCount() > 0){
+            this.movies.addAll(fetchedMovies);
+            notifyItemRangeInserted(this.getItemCount(),this.movies.size()-1);
+        }
+        else{
+            this.movies = fetchedMovies;
+            notifyDataSetChanged();
+        }
+
     }
 
 

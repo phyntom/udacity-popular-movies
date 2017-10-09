@@ -29,23 +29,43 @@ public class MainActivity extends AppCompatActivity implements MovieViewHolderCl
     ProgressBar progressBar;
     private TextView titleTextView;
 
+    private LoadMoreRecyclerOnScrollListener loadMoreRecyclerOnScrollListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        progressBar=(ProgressBar)findViewById(R.id.pb_loading_content);
+        progressBar = (ProgressBar) findViewById(R.id.pb_loading_content);
         recyclerView = (RecyclerView) findViewById(R.id.rv_display_movies);
         recyclerView.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(gridLayoutManager);
 
         SharedPreferences sharedPreference = PreferenceManager.getDefaultSharedPreferences(this);
-        String searchKey = sharedPreference.getString("pref_sort_key", "popular");
-        String language = sharedPreference.getString("pref_lan_key", "en-US");
+        final String sortBy = sharedPreference.getString("pref_sort_key", "popular");
+        final String language = sharedPreference.getString("pref_lan_key", "en-US");
+        new FetchTask().execute(sortBy, language, "1");
 
-        new FetchTask().execute(searchKey, language);
         mAdapter = new MovieAdapter(getApplicationContext(), this);
         recyclerView.setAdapter(mAdapter);
+
+        loadMoreRecyclerOnScrollListener= new LoadMoreRecyclerOnScrollListener(gridLayoutManager) {
+            @Override
+            public void onLoadMorePage(int page) {
+                loadMoreMovies(sortBy, language, "" + page);
+            }
+        };
+        recyclerView.addOnScrollListener(loadMoreRecyclerOnScrollListener);
+    }
+
+    /**
+     * load more movies by calling background task
+     * @param sortBy
+     * @param language
+     * @param page
+     */
+    public void loadMoreMovies(String sortBy,String language,String page){
+        new FetchTask().execute(sortBy, language, "" + page);
     }
 
     @Override
@@ -87,22 +107,25 @@ public class MainActivity extends AppCompatActivity implements MovieViewHolderCl
 
         @Override
         protected List<Movie> doInBackground(String... strings) {
-            String searchCriteria = null;
-            String pageSize = null;
+            String sortBy = null;
+            String lan = null;
+            String page = null;
             try {
                 if (strings.length > 0) {
-                    searchCriteria = strings[0];
+                    sortBy = strings[0];
                 }
                 if (strings.length > 1) {
-                    pageSize = strings[1];
+                    lan = strings[1];
                 }
-                if(isInternetConnectionAvailable()) {
+                if (strings.length > 2) {
+                    page = strings[2];
+                }
+                if (isInternetConnectionAvailable()) {
                     MovieService service = new MovieService();
-                    return service.fetchMovies(searchCriteria, pageSize);
-                }
-                else{
-                    String errorMessage=getString(R.string.error_internet);
-                    Toast.makeText(getApplicationContext(),errorMessage,Toast.LENGTH_SHORT).show();
+                    return service.fetchMovies(sortBy, lan, page);
+                } else {
+                    String errorMessage = getString(R.string.error_internet);
+                    Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
                     return new ArrayList<>();
                 }
             }
@@ -119,12 +142,13 @@ public class MainActivity extends AppCompatActivity implements MovieViewHolderCl
             mAdapter.setMoviesData(movieList);
             progressBar.setVisibility(View.INVISIBLE);
         }
+
         // Based on : https://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-times-out
         // 2017-10-01
         public boolean isInternetConnectionAvailable() {
             ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             if (connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected()) {
-                Log.d("CONNECTION","connected");
+                Log.d("CONNECTION", "connected");
                 return true;
             } else {
                 return false;

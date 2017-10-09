@@ -37,7 +37,7 @@ public class MovieDetails extends AppCompatActivity {
             titleTextView.setText(getString(R.string.title) + " : " + selectedMovie.getTitle());
             averageRateTextView.setText(getString(R.string.rating) + " : " + selectedMovie.getVoteAverage());
             overviewTextView.setText(getString(R.string.overview) + " : " + selectedMovie.getOverview());
-            Picasso.with(this).load("https://image.tmdb.org/t/p/w342/" + selectedMovie.getPosterPath()).resize(getResources().getInteger(R.integer.poster_342_width), getResources().getInteger(R.integer.poster_342_height)).into(ivPoster);
+            Picasso.with(this).load("https://image.tmdb.org/t/p/w342/" + selectedMovie.getPosterPath()).into(ivPoster);
             releaseDate.setText(getString(R.string.release_date) + " : " + format.format(selectedMovie.getReleaseDate()));
 
         }
