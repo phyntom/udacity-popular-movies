@@ -25,13 +25,13 @@ class MovieService {
     private static final String API_KEY = "";
     private static String MOVIE_BASE_UR = "https://api.themoviedb.org/3/movie/";
 
-    public List<Movie> fetchMovies(String sortBy,String lan,String pageSize) {
+    public List<Movie> fetchMovies(String sortBy,String pageSize) {
         List<Movie> movies = new ArrayList<>();
         Uri uri = Uri.parse(MOVIE_BASE_UR)
                 .buildUpon()
                 .appendPath(sortBy)
                 .appendQueryParameter("api_key", API_KEY)
-                .appendQueryParameter("language", lan)
+                .appendQueryParameter("language","en-US")
                 .appendQueryParameter("page",pageSize)
                 .build();
         try {

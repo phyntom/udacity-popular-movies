@@ -11,7 +11,11 @@
     <string name="rating">Rating</string>
     <string name="release_date">Release Date</string>
     <string name="overview">Description</string>
+    <!-- Menu item texts   -->
+    <string name="menu_popular_title">Most Popular</string>
+    <string name="menu_top_rated_title">Top Rated</string>
 
+    <!-- Setting arrays values and label -->
     <string name="pref_sort_by_title">Sort By</string>
     <string-array name="pref_sort_order_title">
         <item>Most Popular</item>
@@ -35,5 +39,5 @@
         <item>de</item>
     </string-array>
     <!--Text to display when not internet connection-->
-    <string name="error_internet">No internet connection available. Check your internet connection</string>
+    <string name="error_internet">No internet connection available.</string>
 </resources>

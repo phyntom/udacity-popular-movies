@@ -27,9 +27,9 @@ public class MovieDetails extends AppCompatActivity {
 
         titleTextView = (TextView) findViewById(R.id.tv_title);
         ivPoster = (ImageView) findViewById(R.id.iv_poster);
-        averageRateTextView = (TextView) findViewById(R.id.tv_vote_average);
-        overviewTextView = (TextView) findViewById(R.id.tv_overview);
-        releaseDate = (TextView) findViewById(R.id.tv_release_date);
+        averageRateTextView =(TextView) findViewById(R.id.tv_vote_average);
+        overviewTextView = (TextView)findViewById(R.id.tv_overview);
+        releaseDate = (TextView)findViewById(R.id.tv_release_date);
 
         Intent sentIntent = getIntent();
         if (sentIntent.hasExtra("INTENT_MOVIE")) {

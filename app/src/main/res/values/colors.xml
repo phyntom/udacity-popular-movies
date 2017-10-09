@@ -2,7 +2,7 @@
 <resources>
 
     <color name="colorPrimary">#0099e5</color>
-    <color name="colorPrimaryDark">#039be5</color>
+    <color name="colorPrimaryDark">#df110401</color>
     <color name="colorAccent">#ff6d00</color>
     <!--Text Colors-->
     <color name="app_title">#ECEFF1</color>
@@ -10,5 +10,5 @@
     <color name="separator">#BDBDBD</color>
     <!--UI-colors-->
     <color name="display">#ECEFF1</color>
-    <color name="display_details">#7e57c2</color>
+    <color name="display_details">#fdfdfd</color>
 </resources>
